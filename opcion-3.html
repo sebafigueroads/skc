@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="nojs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>SKC · OCHO FRENTES</title>
+<meta name="description" content="Las ocho industrias de SKC en un recorrido inmersivo a pantalla completa: minería, construcción, agrícola, forestal, transporte, industrial, portuario y repuestos, con sus marcas y servicios.">
+<meta name="theme-color" content="#04122B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SKC · Ocho frentes">
+<meta property="og:description" content="Un mundo de soluciones, frente por frente. Más de 30 marcas, 12 oficinas, más de 1.000 colaboradores.">
+<meta property="og:image" content="https://sebafigueroads.github.io/skc/img/og-3.jpg">
+<meta property="og:locale" content="es_CL">
+<link rel="icon" href="img/marca/favicon-512.png">
+<link rel="apple-touch-icon" href="img/marca/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SKC · OCHO FRENTES
+   Inmersiva: las ocho industrias como capítulos a pantalla completa.
+   Las letras SKC crecen con el avance; un riel numera los frentes;
+   video en minería, portuario y transporte.
+   ============================================================ */
+:root{
+  --bg:#04122B; --az:#0050B0; --az-c:#4A90D9; --rj:#E01020; --ink:#F4F6FA; --body:#C9D4E6; --mute:#7F93B3; --hair:rgba(255,255,255,.14);
+  --gut:clamp(20px,5vw,84px); --bar:calc(60px + env(safe-area-inset-bottom)); --ease:cubic-bezier(.16,.84,.28,1);
+  --fd:"Bebas Neue","IBM Plex Sans",Impact,sans-serif; --ft:"IBM Plex Sans",-apple-system,Arial,sans-serif; --fm:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+html.js{scroll-snap-type:y proximity}
+body{background:var(--bg);color:var(--body);font-family:var(--ft);font-size:clamp(1rem,1.15vw,1.15rem);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--rj);color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--az-c);outline-offset:3px}
+.k{font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--az-c)}
+.k.g{color:var(--mute)}.k.r{color:var(--rj)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:52px;padding:.9rem 1.6rem;border-radius:6px;font-weight:700;font-size:1rem;border:1px solid transparent;transition:transform .25s var(--ease),background .25s}
+.btn-rj{background:var(--rj);color:#fff}.btn-rj:hover{background:#C50D1B;transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.4)}.btn-o:hover{border-color:#fff}
+
+.cap{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate;scroll-snap-align:start}
+.cap .foto{position:absolute;inset:0;z-index:-2}
+.cap .foto img,.cap .foto video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 2s var(--ease)}
+.cap.in .foto img,.cap.in .foto video{transform:scale(1)}
+.cap .foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,43,.35) 0%,rgba(4,18,43,.12) 40%,rgba(4,18,43,.82) 75%,rgba(4,18,43,.98) 100%)}
+.cap .in{position:relative;z-index:2;padding:18vh var(--gut) 12vh;padding-right:calc(var(--gut) + 110px);display:grid;gap:1.3rem;max-width:1600px;width:100%;margin:0 auto}
+@media (max-width:899px){.cap .in{padding-right:var(--gut)}}
+.num{font-family:var(--fd);font-size:clamp(5rem,16vw,15rem);line-height:.8;letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.26);position:absolute;left:var(--gut);top:10vh;pointer-events:none;user-select:none;z-index:1}
+h1,.cap h2{font-family:var(--fd);text-transform:uppercase;line-height:.86;letter-spacing:.005em;color:var(--ink);text-wrap:balance}
+h1{font-size:clamp(3.4rem,11vw,11rem);max-width:12ch}
+h1 em{font-style:normal;color:var(--az-c)}
+.cap h2{font-size:clamp(2.8rem,8vw,8rem);max-width:12ch}
+.cap p.t{max-width:54ch;font-size:clamp(1.02rem,1.4vw,1.28rem);font-weight:300;color:var(--body)}
+.cap p.t b{color:var(--ink);font-weight:500}
+.data{display:flex;flex-wrap:wrap;gap:1.4rem 2.6rem;padding-top:1.4rem;border-top:1px solid var(--hair)}
+.data b{display:block;font-family:var(--fm);font-weight:700;font-size:clamp(1.5rem,2.8vw,2.3rem);color:var(--ink);letter-spacing:-.02em;line-height:1}
+.data .k{display:block;margin-top:.4rem}
+.marcas{display:flex;flex-wrap:wrap;gap:.5rem}
+.marcas span{font-family:var(--fm);font-size:.74rem;letter-spacing:.8px;text-transform:uppercase;border:1px solid var(--hair);padding:.42rem .7rem;border-radius:4px;color:var(--body)}
+.marcas img{height:22px;width:auto;filter:brightness(0) invert(1);opacity:.85;align-self:center}
+.marcas img.pl{filter:none;opacity:1;background:#fff;padding:4px 8px;border-radius:4px;height:30px}
+.servs{font-family:var(--fm);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--mute)}
+.servs b{color:var(--az-c);font-weight:400}
+html.js .rv{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+html.js .cap.in .rv{opacity:1;transform:none}
+html.js .cap.in .rv:nth-child(2){transition-delay:.08s}html.js .cap.in .rv:nth-child(3){transition-delay:.16s}html.js .cap.in .rv:nth-child(4){transition-delay:.24s}html.js .cap.in .rv:nth-child(5){transition-delay:.3s}
+.skc{position:fixed;right:-1vw;bottom:-6vh;font-family:var(--fd);font-size:34vh;line-height:.8;color:rgba(255,255,255,.06);pointer-events:none;user-select:none;z-index:0;transform:scale(var(--hs,1));transform-origin:right bottom;transition:transform .3s linear;will-change:transform}
+.rail{position:fixed;right:var(--gut);top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;gap:16px;pointer-events:none}
+@media (min-width:900px){.rail{display:flex}}
+.rail a{pointer-events:auto;display:flex;align-items:center;gap:10px;justify-content:flex-end;font-family:var(--fm);font-size:10px;letter-spacing:1.2px;color:var(--mute);text-transform:uppercase}
+.rail a span{opacity:0;transition:opacity .3s}
+.rail a i{display:block;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);transition:background .3s,transform .3s}
+.rail a.on{color:var(--ink)}.rail a.on span,.rail a:hover span{opacity:1}.rail a.on i{background:var(--rj);transform:scale(1.5)}
+.hd{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px var(--gut);pointer-events:none}
+.hd>*{pointer-events:auto}.hd img{height:34px;width:auto}
+.hd .tel{font-family:var(--fm);font-size:.85rem;font-weight:700;color:var(--ink)}
+@media (min-width:900px){.hd img{height:40px}}
+.hint{position:fixed;left:var(--gut);bottom:2.6vh;z-index:50;font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);display:none;gap:.8rem;align-items:center}
+@media (min-width:900px){.hint{display:flex}}
+.hint i{display:block;width:1px;height:38px;background:var(--hair);position:relative;overflow:hidden}
+.hint i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--rj);animation:drop 1.8s var(--ease) infinite}
+@keyframes drop{to{top:110%}}
+.cierre .in{align-content:center}
+.cierre .row{display:flex;flex-wrap:wrap;gap:1rem}
+.cierre .dir{display:grid;gap:.3rem;color:var(--mute);font-size:.95rem}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#000;padding-bottom:env(safe-area-inset-bottom)}
+.bar a{display:flex;align-items:center;justify-content:center;min-height:60px;font-weight:700}
+.bar .a{background:var(--rj);color:#fff}.bar .w{background:var(--az);color:#fff}
+@media (min-width:900px){.bar{display:none}}
+@media (max-width:899px){body{padding-bottom:var(--bar)}.cap:last-child{min-height:calc(100svh - var(--bar))}}
+@media (prefers-reduced-motion:reduce){.cap .foto img,.cap .foto video{transform:none;transition:none}.hint i::after{animation:none}html.js .rv{opacity:1;transform:none;transition:none}.skc{transition:none}}
+</style>
+</head>
+<body>
+<header class="hd"><a href="#c0" aria-label="SKC"><img src="img/marca/logo-blanco.png" alt="SKC" width="170" height="64"></a><a class="tel" href="tel:6004105000">600 410 5000</a></header>
+<span class="skc" aria-hidden="true">SKC</span>
+<div class="hint" aria-hidden="true"><i></i>Baje · ocho frentes</div>
+<nav class="rail" aria-label="Frentes">
+  <a href="#c1" data-i="1"><span>Minería</span><i></i></a><a href="#c2" data-i="2"><span>Construcción</span><i></i></a><a href="#c3" data-i="3"><span>Agrícola</span><i></i></a><a href="#c4" data-i="4"><span>Forestal</span><i></i></a><a href="#c5" data-i="5"><span>Transporte</span><i></i></a><a href="#c6" data-i="6"><span>Industrial</span><i></i></a><a href="#c7" data-i="7"><span>Portuario</span><i></i></a><a href="#c8" data-i="8"><span>Repuestos</span><i></i></a>
+</nav>
+
+<section class="cap" id="c0" data-i="0">
+  <div class="foto"><img src="img/eq/equipo.jpg" alt="Equipo de SKC caminando por un patio de máquinas al amanecer" width="1920" height="1097" fetchpriority="high"></div>
+  <span class="num" aria-hidden="true">08</span>
+  <div class="in">
+    <span class="k rv">SKC · una empresa Sigdo Koppers · más de 50 años</span>
+    <h1 class="rv">Ocho <em>frentes.</em></h1><!-- COPY PROPUESTO -->
+    <p class="t rv">Minería, construcción, agro, forestal, transporte, industria, puertos y repuestos. <b>Un frente por capítulo</b>, con las marcas que SKC representa en Chile y el servicio que las respalda.</p>
+    <div class="data rv"><div><b>+30</b><span class="k g">marcas representadas</span></div><div><b>12</b><span class="k g">oficinas regionales</span></div><div><b>+1.000</b><span class="k g">colaboradores</span></div><div><b id="hora">08:00:00</b><span class="k g">hora en Chile</span></div></div>
+  </div>
+</section>
+
+<section class="cap" id="c1" data-i="1">
+  <div class="foto"><img src="img/eq/mineria.webp" alt="Mina de cobre a rajo abierto al atardecer" width="1920" height="1097" loading="lazy"><video data-amb autoplay muted loop playsinline preload="metadata" poster="img/eq/mineria.webp" aria-hidden="true" tabindex="-1"><source src="video/mineria.mp4" type="video/mp4"></video></div>
+  <span class="num" aria-hidden="true">01</span>
+  <div class="in"><span class="k rv">01 · Minería</span><h2 class="rv">Donde la roca manda</h2><!-- COPY PROPUESTO --><p class="t rv">Equipos para las faenas más exigentes del país, con <b>servicio técnico en terreno</b> y el Centro de Monitoreo de Operaciones siguiendo la flota en tiempo real.</p><div class="marcas rv"><span>Volvo CE</span><img class="pl" src="img/marcas/m-manitou.png" alt="Manitou"><img class="pl" src="img/marcas/m-newhollandconstruction.png" alt="New Holland Construction"><span>Sandvik</span><span>MDS</span></div><span class="servs rv"><b>Servicio</b> técnico · MOC · SK Rental</span></div>
+</section>
+
+<section class="cap" id="c2" data-i="2">
+  <div class="foto"><img src="img/eq/construccion.jpg" alt="Excavadora de ruedas en obra urbana" width="1920" height="1097" loading="lazy"></div>
+  <span class="num" aria-hidden="true">02</span>
+  <div class="in"><span class="k rv">02 · Construcción</span><h2 class="rv">La ciudad se levanta</h2><!-- COPY PROPUESTO --><p class="t rv">Una gama completa para construcción y obras civiles, gracias a una <b>red de servicio a nivel nacional</b>. Marcas de prestigio mundial representadas en forma exclusiva.</p><div class="marcas rv"><span>Volvo CE</span><img class="pl" src="img/marcas/m-manitou.png" alt="Manitou"><img class="pl" src="img/marcas/m-ausa.png" alt="AUSA"><img class="pl" src="img/marcas/m-dernaseer.png" alt="Dernaseer"><img src="img/marcas/m-sdlg.png" alt="SDLG"></div><span class="servs rv"><b>SK Rental</b> · BeMarket usados · Servicio técnico</span></div>
+</section>
+
+<section class="cap" id="c3" data-i="3">
+  <div class="foto"><img src="img/eq/agricola.jpg" alt="Tractor en un viñedo al amanecer" width="1920" height="1097" loading="lazy"></div>
+  <span class="num" aria-hidden="true">03</span>
+  <div class="in"><span class="k rv">03 · Agrícola</span><h2 class="rv">Cinco generaciones de campo</h2><!-- COPY PROPUESTO --><p class="t rv">Más de 126 años de New Holland apoyando a los agricultores del mundo, la agricultura de precisión de <b>PLM</b> y palas Quicke diseñadas para cada tractor.</p><div class="marcas rv"><span>New Holland Agriculture</span><img src="img/marcas/m-plm.png" alt="PLM"><img class="pl" src="img/marcas/m-jan.png" alt="Jan"><span>Quicke</span><img src="img/marcas/m-berthoud.png" alt="Berthoud"></div><span class="servs rv"><b>Repuestos</b> BeParts · Servicio técnico</span></div>
+</section>
+
+<section class="cap" id="c4" data-i="4">
+  <div class="foto"><img src="img/eq/forestal.jpg" alt="Cosechadora forestal en una plantación de pinos" width="1920" height="1097" loading="lazy"></div>
+  <span class="num" aria-hidden="true">04</span>
+  <div class="in"><span class="k rv">04 · Forestal</span><h2 class="rv">El bosque, medido en toneladas</h2><!-- COPY PROPUESTO --><p class="t rv">Cosecha y procesamiento forestal con equipos diseñados para el bosque del sur de Chile.</p><div class="marcas rv"><img class="pl" src="img/marcas/m-timberpro.png" alt="TimberPro"><img src="img/marcas/m-waratah.png" alt="Waratah"></div><span class="servs rv"><b>Servicio</b> técnico · Capacitación</span></div>
+</section>
+
+<section class="cap" id="c5" data-i="5">
+  <div class="foto"><img src="img/eq/transporte.jpg" alt="Camión en una carretera costera al atardecer" width="1920" height="1097" loading="lazy"><video data-amb autoplay muted loop playsinline preload="metadata" poster="img/eq/transporte.jpg" aria-hidden="true" tabindex="-1"><source src="video/transporte.mp4" type="video/mp4"></video></div>
+  <span class="num" aria-hidden="true">05</span>
+  <div class="in"><span class="k rv">05 · Transporte</span><h2 class="rv">Chile de norte a sur, por carretera</h2><!-- COPY PROPUESTO --><p class="t rv">Camiones pesados, livianos y buses, con repuestos <b>TRP</b> y la división que posicionó a la marca entre las mejores del mercado chileno.</p><div class="marcas rv"><img class="pl" src="img/marcas/m-daf.png" alt="DAF"><img class="pl" src="img/marcas/m-kenworth.png" alt="Kenworth"><img src="img/marcas/m-jmc.png" alt="JMC"><img src="img/marcas/m-golden-dragon.png" alt="Golden Dragon"><img class="pl" src="img/marcas/m-trp.png" alt="TRP"></div><span class="servs rv"><b>Renting</b> · Servicio técnico · BeParts</span></div>
+</section>
+
+<section class="cap" id="c6" data-i="6">
+  <div class="foto"><img src="img/eq/industrial.jpg" alt="Grúa horquilla eléctrica en una bodega" width="1920" height="1097" loading="lazy"></div>
+  <span class="num" aria-hidden="true">06</span>
+  <div class="in"><span class="k rv">06 · Industrial</span><h2 class="rv">La bodega no se detiene</h2><!-- COPY PROPUESTO --><p class="t rv">Equipos logísticos <b>Toyota</b> en arriendo a largo plazo a través de ESL, y generación de energía Himoinsa.</p><div class="marcas rv"><span>Toyota</span><img class="pl" src="img/marcas/m-himoinsa.png" alt="Himoinsa"></div><span class="servs rv"><b>ESL</b> equipos logísticos · Renting</span></div>
+</section>
+
+<section class="cap" id="c7" data-i="7">
+  <div class="foto"><img src="img/eq/portuario.jpg" alt="Reach stacker en un puerto al amanecer" width="1920" height="1097" loading="lazy"><video data-amb autoplay muted loop playsinline preload="metadata" poster="img/eq/portuario.jpg" aria-hidden="true" tabindex="-1"><source src="video/portuario.mp4" type="video/mp4"></video></div>
+  <span class="num" aria-hidden="true">07</span>
+  <div class="in"><span class="k rv">07 · Portuario</span><h2 class="rv">El puerto amanece cargando</h2><!-- COPY PROPUESTO --><p class="t rv">Manipulación de contenedores y carga a granel en los puertos de Chile. El grupo Sigdo Koppers también participa directamente en el sector portuario.</p><div class="marcas rv"><span>Kalmar</span><img src="img/marcas/m-mantsinen.png" alt="Mantsinen"></div><span class="servs rv"><b>Servicio</b> técnico · MOC</span></div>
+</section>
+
+<section class="cap" id="c8" data-i="8">
+  <div class="foto"><img src="img/eq/repuestos.jpg" alt="Centro de distribución de repuestos" width="1920" height="1097" loading="lazy"></div>
+  <span class="num" aria-hidden="true">08</span>
+  <div class="in"><span class="k rv">08 · Repuestos e insumos</span><h2 class="rv">La pieza, hoy</h2><!-- COPY PROPUESTO --><p class="t rv">Tienda online <b>BeParts</b> de repuestos e insumos para camiones y maquinaria; neumáticos Bridgestone y lubricantes Petronas y Fuchs desde la división de insumos.</p><div class="marcas rv"><img class="pl" src="img/marcas/m-bridgestone.png" alt="Bridgestone"><img src="img/marcas/m-petronas.png" alt="Petronas"><img src="img/marcas/m-fuchs.png" alt="Fuchs"><img class="pl" src="img/marcas/m-trp.png" alt="TRP"><img src="img/marcas/m-red-power.png" alt="Red Power"></div><span class="servs rv"><b>beparts.cl</b> · SKC Circular</span></div>
+</section>
+
+<section class="cap cierre" id="c9" data-i="9">
+  <div class="foto"><img src="img/eq/moc.jpg" alt="" aria-hidden="true" width="1600" height="1040" loading="lazy"></div>
+  <span class="num" aria-hidden="true">SK</span>
+  <div class="in">
+    <span class="k rv">Contacto</span>
+    <h2 class="rv">¿En qué frente está su operación?</h2><!-- COPY PROPUESTO -->
+    <div class="row rv"><a class="btn btn-rj" href="tel:6004105000">Venta de unidades · 600 410 5000</a><a class="btn btn-o" href="https://www.skc.cl/oficinasregionales" target="_blank" rel="noopener">Ver oficinas regionales</a></div>
+    <div class="dir rv"><span>Mesa central +56 228 373 000 · servicioalcliente@skc.cl · casa matriz en Lampa</span><span class="k g" style="margin-top:.5rem">Marcas y servicios según skc.cl</span></div>
+  </div>
+</section>
+
+<nav class="bar" aria-label="Acciones rápidas"><a class="a" href="tel:6004105000">Cotizar</a><a class="w" href="#c9">Contacto</a></nav>
+
+<script>
+document.documentElement.classList.replace('nojs','js');
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,root=document.documentElement;
+  var caps=[].slice.call(document.querySelectorAll('.cap')),dots=[].slice.call(document.querySelectorAll('.rail a'));
+  function activa(i){dots.forEach(function(d){d.classList.toggle('on',+d.dataset.i===i);});}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');activa(+e.target.dataset.i);}});},{threshold:.45});
+  caps.forEach(function(c){io.observe(c);});
+  function check(){for(var i=0;i<caps.length;i++){var c=caps[i],r=c.getBoundingClientRect();if(!c.classList.contains('in')&&r.top<innerHeight*.6&&r.bottom>innerHeight*.4){c.classList.add('in');activa(+c.dataset.i);}}
+    var p=scrollY/Math.max(1,root.scrollHeight-innerHeight);root.style.setProperty('--hs',(1+p*1.6).toFixed(3));}
+  addEventListener('scroll',check,{passive:true});requestAnimationFrame(check);
+  setTimeout(function(){if(!caps[0].classList.contains('in')){caps[0].classList.add('in');activa(0);}},2500);
+  var h=document.getElementById('hora');function tick(){var f=new Intl.DateTimeFormat('es-CL',{timeZone:'America/Santiago',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}),p={};f.formatToParts(new Date()).forEach(function(x){p[x.type]=x.value;});h.textContent=p.hour+':'+p.minute+':'+p.second;}
+  tick();setInterval(tick,1000);
+  (function(){var vs=document.querySelectorAll('video[data-amb]'),off=rm||(navigator.connection&&navigator.connection.saveData);vs.forEach(function(v){if(off){v.remove();return;}v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});})();
+})();
+</script>
+</body>
+</html>

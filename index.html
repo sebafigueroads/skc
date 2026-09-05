@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Digitals × SKC · 4 direcciones</title>
+<meta name="description" content="Digitals para SKC: cuatro direcciones de web y landing, y una muestra de contenido en video.">
+<meta name="theme-color" content="#071A3A">
+<meta property="og:title" content="Digitals × SKC · Propuesta web · 4 direcciones">
+<meta property="og:description" content="«Un Mundo de Soluciones», «Catálogo de Marcas», «Ocho Frentes» y «Cotiza». Cuatro webs, una marca.">
+<meta property="og:image" content="https://sebafigueroads.github.io/skc/img/og-1.jpg">
+<link rel="icon" href="img/marca/favicon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#071A3A;--az:#0050B0;--az-c:#4A90D9;--rj:#E01020;--ink:#F4F6FA;--body:#C9D4E6;--mute:#7F93B3;--hair:rgba(255,255,255,.14);--dg:#3DDC97;--gut:clamp(20px,5vw,84px);--ease:cubic-bezier(.16,.84,.28,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:"IBM Plex Sans",-apple-system,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.k{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--az-c)}
+.fd{font-family:"Bebas Neue","IBM Plex Sans",Impact,sans-serif;text-transform:uppercase;letter-spacing:.005em;font-weight:400}
+.top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:12px var(--gut);background:linear-gradient(180deg,rgba(7,26,58,.92),rgba(7,26,58,0));pointer-events:none}
+.top>*{pointer-events:auto}
+.marcas{display:flex;align-items:center;gap:.9rem}
+.marcas img.dg{height:30px;width:auto}.marcas img.cl{height:30px;width:auto}
+.marcas .para{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
+.pill{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink);border:1px solid rgba(255,255,255,.35);border-radius:100px;padding:.5rem .95rem;white-space:nowrap}
+@media (min-width:900px){.marcas img.dg,.marcas img.cl{height:36px}}
+@media (max-width:640px){.pill{display:none}.marcas{gap:.6rem}.marcas img.dg,.marcas img.cl{height:26px}}
+.hero{position:relative;min-height:92svh;display:grid;align-items:end;overflow:hidden;padding:20vh var(--gut) 8vh}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg img,.hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,26,58,.35),rgba(7,26,58,.5) 50%,rgba(7,26,58,.97))}
+.hero-skc{position:absolute;right:-2vw;top:6vh;font-family:"Bebas Neue",Impact,sans-serif;font-size:42vh;line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.14);z-index:0;pointer-events:none;user-select:none}
+.hero .k{display:inline-flex;align-items:center;gap:.7rem}.hero .k::before{content:"";width:28px;height:2px;background:var(--rj)}
+h1{font-size:clamp(3.2rem,10vw,9.8rem);line-height:.86;color:var(--ink);text-wrap:balance;max-width:13ch;margin-top:1rem}
+h1 em{font-style:normal;color:var(--az-c)}
+.hero p{max-width:64ch;margin-top:1.4rem;font-size:clamp(1rem,1.3vw,1.2rem);font-weight:300}
+.hero p b{color:var(--ink);font-weight:500}
+.hero .fila{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem 1.8rem;font-family:"JetBrains Mono",monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--mute)}
+.sec-h{padding:clamp(56px,8vw,120px) var(--gut) 0;display:grid;gap:.8rem}
+h2{font-size:clamp(2.6rem,6.4vw,6rem);line-height:.9;color:var(--ink);text-wrap:balance}
+.lead{max-width:62ch;color:var(--body);font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300}
+.lead b{color:var(--ink);font-weight:500}
+.ops{padding:clamp(28px,4vw,56px) var(--gut) 0;display:grid;gap:1.4rem}
+@media (min-width:900px){.ops{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4vw}}
+.op{position:relative;display:grid;align-content:end;min-height:min(70svh,640px);border-radius:8px;overflow:hidden;isolation:isolate;transition:transform .5s var(--ease)}
+.op:hover{transform:translateY(-6px)}
+.op img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease)}
+.op:hover img{transform:scale(1.05)}
+.op::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,26,58,.05) 0%,rgba(7,26,58,.35) 45%,rgba(7,26,58,.95) 100%)}
+.op .in{padding:clamp(22px,2.6vw,36px)}
+.op .n{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:2px;color:var(--az-c)}
+.op .n i{font-style:normal;color:var(--mute);margin-left:.8rem}
+.op h3{margin-top:.6rem;font-size:clamp(2.4rem,4.2vw,4.2rem);line-height:.9;color:var(--ink)}
+.op .h{margin-top:1rem;font-weight:700;font-size:1.05rem;color:var(--ink)}
+.op p{margin-top:.6rem;font-size:.95rem;color:var(--body);max-width:62ch}
+.op .t{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.op .t span{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.8px;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);padding:.32rem .55rem;border-radius:3px;color:var(--body)}
+.op .go{margin-top:1.4rem;display:inline-flex;align-items:center;gap:.5rem;background:var(--rj);color:#fff;font-weight:700;padding:.85rem 1.3rem;border-radius:6px;min-height:48px}
+.op.b .go{background:#F4F6FA;color:var(--bg)}
+.muestra{padding:clamp(72px,10vw,150px) 0 0;position:relative}
+.muestra .sec-h{padding-top:0}
+.tira{margin-top:clamp(28px,4vw,56px);display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gut) 1.4rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;align-items:stretch}
+.tira::-webkit-scrollbar{display:none}
+.pieza{flex:0 0 auto;scroll-snap-align:start;position:relative;border-radius:8px;overflow:hidden;background:#000;height:clamp(300px,54svh,560px);isolation:isolate;aspect-ratio:16/9}
+.pieza video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pieza .cap{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.75));display:grid;gap:.25rem;z-index:2}
+.pieza .cap b{font-weight:700;color:var(--ink);font-size:.98rem;line-height:1.15}
+.pieza .cap span{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--az-c)}
+.hint{padding:0 var(--gut);font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--mute)}
+.nota{padding:1.4rem var(--gut) 0;max-width:74ch;color:var(--mute);font-size:.95rem}
+.nota b{color:var(--body)}
+.cta{margin-top:clamp(72px,10vw,150px);border-top:1px solid var(--hair);padding:clamp(64px,9vw,130px) var(--gut) clamp(56px,7vw,100px);display:grid;gap:1.2rem;position:relative;overflow:hidden}
+.cta .k{color:var(--dg)}
+.cta h2{font-size:clamp(3rem,9vw,8rem);max-width:12ch}
+.cta h2 em{font-style:normal;color:var(--az-c)}
+.cta p{max-width:58ch;font-size:clamp(1.02rem,1.35vw,1.22rem);font-weight:300}
+.cta .row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.6rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:52px;padding:.9rem 1.6rem;border-radius:6px;font-weight:700;font-size:1rem;border:1px solid transparent;transition:transform .25s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-rj{background:var(--rj);color:#fff}.btn-o{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.4)}
+.cta .dgl{position:absolute;right:var(--gut);bottom:clamp(56px,7vw,100px);height:44px;width:auto;opacity:.9}
+@media (max-width:760px){.cta .dgl{position:static;margin-top:1rem;height:36px}}
+.ft{padding:0 var(--gut) 5vh;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.8px;text-transform:uppercase;color:var(--mute);display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="marcas"><a href="https://digitals.cl" target="_blank" rel="noopener"><img class="dg" src="img/marca/logo-digitals.png" alt="Digitals" width="640" height="301"></a><span class="para">para</span><img class="cl" src="img/marca/logo-blanco.png" alt="SKC" width="170" height="64"></div>
+  <a class="pill" href="#muestra">Propuesta · 4 direcciones · muestra</a>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"><img src="img/eq/mineria.webp" alt="" width="1920" height="1097"><video data-amb autoplay muted loop playsinline preload="metadata" poster="img/eq/mineria.webp" aria-hidden="true" tabindex="-1"><source src="video/mineria.mp4" type="video/mp4"></video></div>
+  <span class="hero-skc" aria-hidden="true">SKC</span>
+  <div>
+    <span class="k">Digitals para SKC · cuatro direcciones · una marca</span>
+    <h1 class="fd">Un mundo de soluciones merece una web <em>de ese tamaño.</em></h1>
+    <p>Cuatro páginas completas y genuinamente distintas para SKC, con su azul y su rojo, sus tipografías IBM Plex Sans y Bebas Neue, y su contenido real: <b>más de 30 marcas</b> con los 23 logos que publica, <b>8 industrias</b>, <b>9 servicios</b> con sus destinos, 12 oficinas, más de 1.000 colaboradores y más de 50 años de Sigdo Koppers. Dos de marca, una inmersiva y una de conversión pura. Y una muestra de lo que podemos crear en video.</p>
+    <div class="fila"><span>Mobile-first · 390 px</span><span>Las letras SKC a escala monumental</span><span>Fotos y video propios</span><span>Datos vivos verdaderos</span></div>
+  </div>
+</section>
+
+<div class="sec-h"><span class="k">01 · Las direcciones</span><h2 class="fd">Elija una. La afinamos conversando.</h2></div>
+<section class="ops" aria-label="Direcciones">
+  <a class="op a" href="opcion-1.html"><img src="img/eq/mineria.webp" alt="" width="1920" height="1097" loading="lazy">
+    <div class="in"><span class="n">01<i>Marca · oscura</i></span><h3 class="fd">«Un Mundo de Soluciones»</h3><p class="h">Azul Sigdo Koppers, rojo SKC como único acento: la mina al atardecer, en video.</p><p>Su propia frase a 11 vw, las letras SKC como marca de agua, la misión que se enciende con el scroll, ocho industrias como capítulos con sus marcas reales, la hilera de 23 logos, los nueve servicios con sus destinos, Lean Kaizen y la historia.</p><div class="t"><span>Video hero</span><span>8 industrias</span><span>9 servicios</span></div><span class="go">Ver dirección →</span></div></a>
+  <a class="op b" href="opcion-2.html"><img src="img/eq/construccion.jpg" alt="" width="1920" height="1097" loading="lazy">
+    <div class="in"><span class="n">02<i>Marca · portal</i></span><h3 class="fd">«Catálogo de Marcas»</h3><p class="h">Claro, tipo portal: las marcas reales por industria, con filtros que funcionan.</p><p>Treinta marcas con la descripción que SKC publica de cada una, filtros pegados arriba por las ocho industrias, y cada fila cotiza al canal correcto: venta, BeParts o lubricantes y neumáticos. Sin cuadrícula: filas editoriales con la placa del logo.</p><div class="t"><span>30 marcas</span><span>Filtros por industria</span><span>Cotización por marca</span></div><span class="go">Ver dirección →</span></div></a>
+  <a class="op c" href="opcion-3.html"><img src="img/eq/portuario.jpg" alt="" width="1920" height="1097" loading="lazy">
+    <div class="in"><span class="n">03<i>Inmersiva</i></span><h3 class="fd">«Ocho Frentes»</h3><p class="h">Las ocho industrias como capítulos a pantalla completa.</p><p>Minería, construcción, agro, forestal, transporte, industrial, portuario y repuestos, cada uno con sus marcas y el servicio que lo respalda. Las letras SKC crecen con el avance; un riel numera los frentes; video en tres capítulos.</p><div class="t"><span>Scroll-snap</span><span>Riel de frentes</span><span>Video</span></div><span class="go">Recorrer los frentes →</span></div></a>
+  <a class="op d" href="opcion-4.html"><img src="img/eq/servicio.jpg" alt="" width="1920" height="1097" loading="lazy">
+    <div class="in"><span class="n">04<i>100 % conversión</i></span><h3 class="fd">«Cotiza»</h3><p class="h">Azul pleno, sin menú: el formulario entiende la necesidad y lleva al canal real.</p><p>Nuevo, arriendo, usado, repuestos, servicio técnico o capacitación; industria, marca y oficina. El mensaje se arma solo y el botón cambia de destino: venta de unidades, SK Rental, BeMarket, BeParts, servicio técnico o SKC Capacitación. Seis canales que se cargan al tocarlos; cinco preguntas frecuentes.</p><div class="t"><span>Formulario primero</span><span>Enrutador de canales</span><span>FAQ</span></div><span class="go">Ver landing →</span></div></a>
+</section>
+
+<section class="muestra" id="muestra">
+  <div class="sec-h"><span class="k">02 · Muestra de contenido</span><h2 class="fd">Lo que podemos crear para SKC</h2><p class="lead">Tres loops de video hechos por <b>Digitals</b> para esta propuesta, listos para los heros de la web y para redes: la mina al atardecer, el puerto al amanecer y la carretera costera. Toque para pausar.</p></div>
+  <div class="tira" id="tira">
+    <figure class="pieza"><video data-amb data-tap autoplay muted loop playsinline preload="metadata" poster="img/eq/poster-mineria.jpg"><source src="video/mineria.mp4" type="video/mp4"></video><figcaption class="cap"><span>Loop · 16:9 · 5 s · hero web</span><b>La mina, al atardecer</b></figcaption></figure>
+    <figure class="pieza"><video data-amb data-tap autoplay muted loop playsinline preload="metadata" poster="img/eq/poster-portuario.jpg"><source src="video/portuario.mp4" type="video/mp4"></video><figcaption class="cap"><span>Loop · 16:9 · 5 s · hero web</span><b>El puerto amanece cargando</b></figcaption></figure>
+    <figure class="pieza"><video data-amb data-tap autoplay muted loop playsinline preload="metadata" poster="img/eq/poster-transporte.jpg"><source src="video/transporte.mp4" type="video/mp4"></video><figcaption class="cap"><span>Loop · 16:9 · 5 s · hero web</span><b>Carretera costera, de norte a sur</b></figcaption></figure>
+  </div>
+  <p class="hint">← deslice →</p>
+  <p class="nota"><b>Sobre las imágenes y el video:</b> las doce fotografías y los tres loops son piezas propias generadas por Digitals para SKC en su paleta. Los logos de marcas son los que skc.cl publica. Los datos, todos del sitio. La lista completa de las 12 oficinas regionales se carga por API en skc.cl y aquí se muestran las siete confirmadas.</p>
+</section>
+
+<section class="cta" id="conversemos">
+  <span class="k">Siguiente paso</span>
+  <h2 class="fd">¿<em>Conversamos</em>?</h2>
+  <p>Esto es un adelanto. Nos encantaría mostrarles el resto: cómo se vería cualquiera de las cuatro direcciones terminada, el plan de contenido en video y cómo se mide. Una reunión de 30 minutos basta.</p>
+  <div class="row"><a class="btn btn-rj" href="https://wa.me/56942201033?text=Hola%20Digitals%2C%20vimos%20la%20propuesta%20para%20SKC%20y%20queremos%20conversar." target="_blank" rel="noopener">Agendar una conversación →</a><a class="btn btn-o" href="https://digitals.cl" target="_blank" rel="noopener">Conocer digitals.cl</a></div>
+  <img class="dgl" src="img/marca/logo-digitals.png" alt="Digitals" width="640" height="301">
+</section>
+<footer class="ft"><span>Digitals × SKC · propuesta 2026</span><span>Lo redactado va marcado como propuesto</span></footer>
+<script>
+(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,off=rm||(navigator.connection&&navigator.connection.saveData);var vs=[].slice.call(document.querySelectorAll('video[data-amb]'));
+  vs.forEach(function(v){if(off){v.removeAttribute('autoplay');v.pause();return;}v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});
+  [].forEach.call(document.querySelectorAll('video[data-tap]'),function(v){v.addEventListener('click',function(){v.paused?v.play():v.pause();});});
+  if('IntersectionObserver' in window&&!off){var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.2});[].forEach.call(document.querySelectorAll('video[data-tap]'),function(v){io.observe(v);});}
+})();
+</script>
+</body>
+</html>
