@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="nojs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>SKC · PORTAL SKC</title>
+<meta name="description" content="El portal de compras de SKC: catálogo real de equipos con búsqueda, filtros por industria y marca, y una bolsa de cotización que se arma sola. Repuestos en BeParts, usados en BeMarket, arriendo en SK Rental.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SKC · Portal SKC">
+<meta property="og:description" content="Busque, filtre, agregue a la bolsa y cotice. Con equipos reales del catálogo de skc.cl.">
+<meta property="og:image" content="https://sebafigueroads.github.io/skc/img/og-5.jpg">
+<meta property="og:locale" content="es_CL">
+<link rel="icon" href="img/marca/favicon-512.png">
+<link rel="apple-touch-icon" href="img/marca/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SKC · PORTAL SKC
+   Portal de compras: buscador con sugerencias reales, filtros por
+   industria, marca y tipo, tarjetas de producto del catálogo vivo de
+   skc.cl y una «bolsa de cotización» persistente que sale por correo.
+   ============================================================ */
+:root{
+  --blanco:#FFFFFF; --papel:#F4F6FA; --hair:#DFE5EE; --az:#0050B0; --az-2:#071A3A; --az-c:#4A90D9; --rj:#E01020; --body:#2E3A4F; --mute:#6D7C95; --ok:#0E9F6E;
+  --gut:clamp(16px,4vw,64px); --ease:cubic-bezier(.16,.84,.28,1);
+  --fd:"Bebas Neue","IBM Plex Sans",Impact,sans-serif; --ft:"IBM Plex Sans",-apple-system,Arial,sans-serif; --fm:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--papel);color:var(--body);font-family:var(--ft);font-size:1rem;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button,input,select{font:inherit}
+input{min-width:0}.hd,.tira-serv,.filtros,.hero{overflow-x:clip}
+::selection{background:var(--rj);color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--az);outline-offset:2px}
+.k{font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute)}
+.wrap{padding-left:var(--gut);padding-right:var(--gut);max-width:1600px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;padding:.65rem 1.1rem;border-radius:6px;font-weight:700;font-size:.95rem;border:1.5px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .2s}
+.btn-az{background:var(--az);color:#fff}.btn-az:hover{background:var(--az-2)}
+.btn-rj{background:var(--rj);color:#fff}.btn-rj:hover{background:#C50D1B}
+.btn-o{background:transparent;color:var(--az-2);border-color:var(--az-2)}.btn-o:hover{background:var(--az-2);color:#fff}
+.btn-w{background:#fff;color:var(--az-2);border-color:var(--hair)}.btn-w:hover{border-color:var(--az-2)}
+
+/* cabecera de portal: logo · buscador · cuenta · bolsa */
+.hd{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.hd .in{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:10px var(--gut);max-width:1600px;margin:0 auto}
+.hd img{height:32px;width:auto}
+.buscar{position:relative;display:flex;align-items:center;background:var(--papel);border:1px solid var(--hair);border-radius:100px;padding:0 .4rem 0 1rem;min-height:44px}
+.buscar input{flex:1;border:0;background:transparent;min-height:42px;font-size:1rem;color:var(--az-2)}
+.buscar input::placeholder{color:var(--mute)}
+.buscar .lupa{width:34px;height:34px;border-radius:50%;background:var(--az-2);display:grid;place-items:center;color:#fff;border:0;cursor:pointer}
+.acc{display:flex;gap:.5rem;align-items:center}
+.acc a,.acc button{display:inline-flex;align-items:center;gap:.45rem;font-weight:700;font-size:.9rem;color:var(--az-2);background:transparent;border:1px solid var(--hair);border-radius:100px;padding:.5rem .9rem;min-height:44px;cursor:pointer;white-space:nowrap}
+.acc .bolsa{background:var(--az-2);color:#fff;border-color:var(--az-2)}
+.acc .bolsa b{background:var(--rj);color:#fff;border-radius:100px;min-width:22px;height:22px;display:grid;place-items:center;font-family:var(--fm);font-size:.72rem}
+.acc .cta{display:none}
+@media (min-width:900px){.acc .cta{display:inline-flex}.hd img{height:40px}}
+@media (max-width:640px){.hd .in{grid-template-columns:auto auto;grid-template-areas:"logo acc" "buscar buscar"}.hd img{grid-area:logo}.buscar{grid-area:buscar}.acc{grid-area:acc;justify-self:end}.acc a span{display:none}}
+.tira-serv{background:var(--az-2);color:#fff;font-family:var(--fm);font-size:.72rem;letter-spacing:1px;text-transform:uppercase}
+.tira-serv .in{display:flex;gap:1.6rem;overflow-x:auto;padding:.55rem var(--gut);max-width:1600px;margin:0 auto;scrollbar-width:none;white-space:nowrap}
+.tira-serv .in::-webkit-scrollbar{display:none}
+.tira-serv a{opacity:.85}.tira-serv a:hover{opacity:1;color:var(--az-c)}
+
+/* hero de portal, compacto pero grande en tipografía */
+.hero{position:relative;overflow:hidden;background:var(--blanco);border-bottom:1px solid var(--hair)}
+.hero-skc{position:absolute;right:-1vw;top:-6vh;font-family:var(--fd);font-size:34vh;line-height:.8;color:rgba(0,80,176,.05);pointer-events:none;user-select:none}
+.hero .inner{display:grid;gap:1.6rem;padding-top:clamp(36px,5vw,72px);padding-bottom:clamp(28px,4vw,56px);position:relative}
+@media (min-width:1040px){.hero .inner{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:end;gap:4vw}}
+.hero .k{display:inline-flex;align-items:center;gap:.7rem;color:var(--az)}.hero .k::before{content:"";width:28px;height:2px;background:var(--rj)}
+h1{font-family:var(--fd);text-transform:uppercase;line-height:.88;letter-spacing:.005em;color:var(--az-2);font-size:clamp(3rem,9vw,8.6rem);text-wrap:balance;margin-top:.8rem;max-width:12ch}
+h1 em{font-style:normal;color:var(--az)}
+.hero p{margin-top:1rem;max-width:56ch;font-weight:300;font-size:clamp(1rem,1.3vw,1.18rem)}
+.hero p b{color:var(--az-2);font-weight:500}
+.vivos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;border-left:1px solid var(--hair);padding-left:1.4rem}
+.vivos b{display:block;font-family:var(--fm);font-weight:700;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--az-2);letter-spacing:-.02em;line-height:1}
+.vivos .k{display:block;margin-top:.35rem}
+.portales{display:grid;gap:.7rem;margin-top:1.2rem}
+@media (min-width:640px){.portales{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.portales a{display:grid;gap:.15rem;padding:.9rem 1rem;border:1px solid var(--hair);border-radius:8px;background:var(--papel);transition:border-color .2s,transform .2s var(--ease)}
+.portales a:hover{border-color:var(--az-2);transform:translateY(-2px)}
+.portales b{font-family:var(--fd);font-size:1.25rem;letter-spacing:.03em;color:var(--az-2);line-height:1}
+.portales span{font-size:.85rem;color:var(--mute)}
+.portales i{font-style:normal;font-family:var(--fm);font-size:.66rem;letter-spacing:1px;text-transform:uppercase;color:var(--az)}
+
+/* filtros pegados */
+.filtros{position:sticky;top:60px;z-index:40;background:rgba(244,246,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+@media (min-width:900px){.filtros{top:62px}}
+@media (max-width:640px){.filtros{top:106px}}
+.filtros .in{display:flex;flex-wrap:wrap;gap:.6rem .8rem;align-items:center;padding:.65rem var(--gut);max-width:1600px;margin:0 auto}
+.chips{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.chips::-webkit-scrollbar{display:none}
+.chips button{border:1px solid var(--hair);background:#fff;border-radius:100px;padding:.42rem .85rem;font-family:var(--fd);font-size:.95rem;letter-spacing:.06em;color:var(--body);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.chips button[aria-pressed="true"]{background:var(--az-2);color:#fff;border-color:var(--az-2)}
+.filtros select{border:1px solid var(--hair);background:#fff;border-radius:100px;padding:.45rem 2rem .45rem .9rem;font-size:.9rem;color:var(--az-2);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23071A3A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .7rem center;background-size:14px;min-height:38px}
+.filtros .cnt{margin-left:auto;font-family:var(--fm);font-size:.76rem;color:var(--mute);letter-spacing:.5px;white-space:nowrap}
+
+/* catálogo */
+.cat{padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(56px,7vw,100px)}
+.grupo{margin-top:clamp(28px,4vw,56px)}
+.grupo:first-child{margin-top:0}
+.grupo h2{font-family:var(--fd);text-transform:uppercase;font-size:clamp(2rem,4.6vw,4rem);line-height:.9;color:var(--az-2);display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.grupo h2 small{font-family:var(--fm);font-size:.72rem;letter-spacing:1.5px;color:var(--rj);text-transform:uppercase}
+.prods{margin-top:1.2rem;display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.p{background:#fff;border-radius:12px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;transition:transform .3s var(--ease),box-shadow .3s;position:relative}
+.p:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(7,26,58,.35)}
+.p .img{aspect-ratio:1/1;background:#fff;display:grid;place-items:center;padding:1rem;border-bottom:1px solid var(--hair)}
+.p .img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.p .body{padding:.9rem 1rem 1rem;display:grid;gap:.4rem;align-content:start}
+.p .tipo{font-family:var(--fm);font-size:.66rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--az)}
+.p .nom{font-family:var(--fd);font-size:1.35rem;letter-spacing:.02em;line-height:1;color:var(--az-2)}
+.p .mod{font-size:.85rem;color:var(--mute);font-family:var(--fm);letter-spacing:.2px;overflow-wrap:anywhere}
+.p .acc2{display:flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap}
+.p .acc2 button{flex:1 1 auto;border:1.5px solid var(--az-2);background:var(--az-2);color:#fff;border-radius:6px;padding:.55rem .7rem;font-weight:700;font-size:.85rem;cursor:pointer;min-height:40px}
+.p .acc2 button.en{background:var(--ok);border-color:var(--ok)}
+.p .acc2 a{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--hair);border-radius:6px;padding:.55rem .7rem;font-family:var(--fm);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--az-2);min-height:40px}
+.p .seg{position:absolute;top:.6rem;right:.6rem;width:34px;height:34px;border-radius:50%;border:1px solid var(--hair);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--mute)}
+.p .seg.on{color:var(--rj);border-color:var(--rj)}
+.vacio{padding:3rem 0;text-align:center;color:var(--mute);font-family:var(--fm);font-size:.9rem}
+.nota{margin-top:2rem;font-size:.9rem;color:var(--mute);max-width:72ch}
+
+/* bolsa de cotización (cajón) */
+.velo{position:fixed;inset:0;background:rgba(7,26,58,.45);z-index:90;opacity:0;pointer-events:none;transition:opacity .3s}
+.velo.on{opacity:1;pointer-events:auto}
+.cajon{position:fixed;top:0;right:0;bottom:0;width:min(480px,100%);background:#fff;z-index:100;transform:translateX(100%);transition:transform .4s var(--ease);display:grid;grid-template-rows:auto 1fr auto;box-shadow:-30px 0 80px -40px rgba(0,0,0,.4)}
+.cajon.on{transform:none}
+.cajon header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;border-bottom:1px solid var(--hair)}
+.cajon header b{font-family:var(--fd);font-size:1.6rem;letter-spacing:.03em;color:var(--az-2)}
+.cajon header button{border:0;background:var(--papel);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.2rem}
+.cajon .lista{overflow-y:auto;padding:.6rem 1.2rem}
+.cajon .item{display:grid;grid-template-columns:64px 1fr auto;gap:.8rem;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--hair)}
+.cajon .item img{width:64px;height:64px;object-fit:contain;background:#fff;border:1px solid var(--hair);border-radius:6px;padding:4px}
+.cajon .item b{display:block;font-family:var(--fd);font-size:1.1rem;letter-spacing:.02em;color:var(--az-2);line-height:1}
+.cajon .item span{display:block;font-size:.78rem;color:var(--mute);font-family:var(--fm)}
+.cajon .qty{display:flex;align-items:center;gap:.3rem}
+.cajon .qty button{width:30px;height:30px;border-radius:50%;border:1px solid var(--hair);background:#fff;cursor:pointer}
+.cajon .qty output{font-family:var(--fm);min-width:1.4rem;text-align:center;font-weight:700}
+.cajon .vac{padding:2.5rem 0;text-align:center;color:var(--mute);font-family:var(--fm);font-size:.85rem}
+.cajon footer{padding:1rem 1.2rem 1.2rem;border-top:1px solid var(--hair);display:grid;gap:.6rem;background:var(--papel)}
+.cajon footer .res{display:flex;justify-content:space-between;font-family:var(--fm);font-size:.78rem;color:var(--mute);letter-spacing:.5px}
+.cajon footer .res b{color:var(--az-2)}
+.cajon footer label{display:grid;gap:.3rem}
+.cajon footer label span{font-family:var(--fm);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mute)}
+.cajon footer input{border:1px solid var(--hair);border-radius:6px;padding:.6rem .8rem;min-height:42px;background:#fff}
+.cajon footer .ok{font-family:var(--fm);font-size:.72rem;color:var(--ok);letter-spacing:1px;text-transform:uppercase;min-height:1.2em}
+.cajon footer .aviso{font-size:.78rem;color:var(--mute)}
+
+.fin{background:var(--az-2);color:#fff;padding:clamp(56px,8vw,110px) 0;position:relative;overflow:hidden}
+.fin-skc{position:absolute;right:-2vw;bottom:-10vh;font-family:var(--fd);font-size:52vh;line-height:.8;color:rgba(255,255,255,.05);pointer-events:none;user-select:none}
+.fin h2{font-family:var(--fd);text-transform:uppercase;line-height:.9;font-size:clamp(2.8rem,7.4vw,7rem);max-width:12ch;text-wrap:balance}
+.fin .row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+.fin .dir{margin-top:1.6rem;color:rgba(255,255,255,.65);display:grid;gap:.3rem;font-size:.95rem}
+.ft{padding:1.4rem var(--gut) 2rem;font-family:var(--fm);font-size:.72rem;letter-spacing:.8px;text-transform:uppercase;color:var(--mute);display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+html.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+html.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}.cajon,.velo,.p{transition:none}}
+</style>
+</head>
+<body>
+<header class="hd"><div class="in">
+  <a href="#" aria-label="SKC, inicio del portal"><img src="img/marca/logo.png" alt="SKC" width="170" height="64"></a>
+  <form class="buscar" role="search" id="fbuscar"><input id="q" type="search" list="sug" placeholder="Buscar equipo, marca o modelo…" autocomplete="off" aria-label="Buscar en el catálogo"><datalist id="sug"></datalist><button class="lupa" type="submit" aria-label="Buscar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button></form>
+  <div class="acc"><a class="cta" href="tel:6004105000">600 410 5000</a><a href="https://www.skc.cl/" target="_blank" rel="noopener" title="Mi Cuenta en skc.cl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Mi Cuenta</span></a><button class="bolsa" id="abrir" type="button" aria-controls="cajon" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg><span>Bolsa</span><b id="n">0</b></button></div>
+</div></header>
+<div class="tira-serv"><div class="in"><a href="https://www.beparts.cl" target="_blank" rel="noopener">BeParts · repuestos e insumos</a><a href="https://www.be-market.com/" target="_blank" rel="noopener">BeMarket · usados</a><a href="https://www.skrental.com/" target="_blank" rel="noopener">SK Rental · arriendo</a><a href="https://www.mocskc.com" target="_blank" rel="noopener">MOC · monitoreo</a><a href="https://www.skccircular.cl" target="_blank" rel="noopener">SKC Circular</a><a href="https://www.skc.cl/servicio-tecnico" target="_blank" rel="noopener">Servicio técnico</a><a href="https://www.skc.cl/capacitaciones" target="_blank" rel="noopener">Capacitación</a></div></div>
+
+<section class="hero"><span class="hero-skc" aria-hidden="true">SKC</span>
+  <div class="wrap inner">
+    <div>
+      <span class="k rv">Portal SKC · catálogo de equipos · una empresa Sigdo Koppers</span>
+      <h1 class="rv">Todo el catálogo. <em>Una bolsa.</em></h1><!-- COPY PROPUESTO -->
+      <p class="rv">Busque por marca o modelo, filtre por industria y <b>agregue a la bolsa de cotización</b>. El portal arma la solicitud con los equipos exactos y la envía a SKC. Sin precios ocultos ni registro para empezar.</p>
+      <div class="portales rv"><a href="https://www.beparts.cl" target="_blank" rel="noopener"><i>Repuestos e insumos</i><b>BeParts</b><span>Tienda online, despacho a todo Chile</span></a><a href="https://www.be-market.com/" target="_blank" rel="noopener"><i>Usados</i><b>BeMarket</b><span>Chile, Colombia, Perú y Bolivia</span></a><a href="https://www.skrental.com/" target="_blank" rel="noopener"><i>Arriendo</i><b>SK Rental</b><span>Maquinaria pesada por proyecto</span></a></div>
+    </div>
+    <div class="vivos rv"><div><b id="v-eq">0</b><span class="k">equipos en esta muestra</span></div><div><b id="v-ma">0</b><span class="k">marcas</span></div><div><b id="v-in">0</b><span class="k">industrias</span></div></div>
+  </div>
+</section>
+
+<div class="filtros" id="filtros"><div class="in">
+  <div class="chips" role="group" aria-label="Industria" id="chips"><button type="button" data-f="todo" aria-pressed="true">Todas</button></div>
+  <select id="fmarca" aria-label="Marca"><option value="">Todas las marcas</option></select>
+  <select id="ftipo" aria-label="Tipo de equipo"><option value="">Todos los tipos</option></select>
+  <select id="orden" aria-label="Orden"><option value="ind">Por industria</option><option value="marca">Por marca</option><option value="tipo">Por tipo</option><option value="az">A → Z</option></select>
+  <span class="cnt" id="cnt">—</span>
+</div></div>
+
+<main class="cat wrap" id="catalogo" aria-live="polite">
+  <div id="grupos"></div>
+  <p class="vacio" id="vacio" hidden>Ningún equipo con esos filtros. Pruebe otra marca o escriba menos.</p>
+  <p class="nota">Los equipos, nombres e imágenes son los publicados en skc.cl; esta muestra toma una parte del catálogo para la propuesta. En producción el portal se conecta al mismo catálogo que hoy alimenta a skc.cl, con listas de compra, seguimiento de equipos y cotización en PDF, que ya existen en su plataforma.</p>
+</main>
+
+<section class="fin"><span class="fin-skc" aria-hidden="true">SKC</span><div class="wrap">
+  <span class="k rv" style="color:var(--az-c)">¿Prefiere hablar?</span>
+  <h2 class="rv" style="margin-top:.6rem">La bolsa se arma sola. Nosotros, el resto.</h2><!-- COPY PROPUESTO -->
+  <div class="row rv"><a class="btn btn-rj" href="tel:6004105000">Venta de unidades · 600 410 5000</a><a class="btn btn-w" href="https://www.skc.cl/contactos" target="_blank" rel="noopener">Formulario de contacto</a></div>
+  <div class="dir rv"><span>Mesa central +56 228 373 000 · servicioalcliente@skc.cl</span><span>Casa matriz: Av. Eduardo Frei Montalva 15800, Lampa</span></div>
+</div></section>
+<footer class="ft"><span>SKC · una empresa Sigdo Koppers</span><span>Catálogo según skc.cl</span></footer>
+
+<div class="velo" id="velo"></div>
+<aside class="cajon" id="cajon" aria-label="Bolsa de cotización" aria-hidden="true">
+  <header><b>Bolsa de cotización</b><button type="button" id="cerrar" aria-label="Cerrar">×</button></header>
+  <div class="lista" id="lista"></div>
+  <footer>
+    <div class="res"><span>Equipos</span><b id="r-n">0</b></div>
+    <label><span>Empresa / faena (opcional)</span><input id="emp" type="text" maxlength="60" placeholder="Empresa o faena"></label>
+    <a class="btn btn-rj" id="enviar" href="mailto:servicioalcliente@skc.cl">Enviar la bolsa a SKC</a>
+    <button class="btn btn-o" type="button" id="copiar">Copiar la solicitud</button>
+    <p class="ok" id="ok" aria-live="polite"></p>
+    <p class="aviso">La bolsa queda guardada en este navegador. En producción se sincroniza con Mi Cuenta y genera la cotización en PDF.</p>
+  </footer>
+</aside>
+
+<script>
+document.documentElement.classList.replace('nojs','js');
+var CATALOGO=/*CATALOGO*/[{"id":"tractocamion-daf-xf-480-4x2-ft-space-cab-e6","nombre":"TRACTOCAMION DAF XF 480 4x2 FT SPACE CAB E6","tipo":"Tractocamión","modelo":"XF 480 4X2 FT SPACE CAB E6","marca":"DAF","ind":"tra","industria":"Transporte","url":"https://www.skc.cl/daf/detalle/tractocamion/13951","img":"img/prod/tractocamion-daf-xf-480-4x2-ft-space-cab-e6.jpg","w":900,"h":900},{"id":"tractocamion-daf-xf-480-6x2-fts-space-cab-e6","nombre":"TRACTOCAMION DAF XF 480 6x2 FTS SPACE CAB E6","tipo":"Tractocamión","modelo":"XF 480 6X2 FTS SPACE CAB E6","marca":"DAF","ind":"tra","industria":"Transporte","url":"https://www.skc.cl/daf/detalle/tractocamion/13953","img":"img/prod/tractocamion-daf-xf-480-6x2-fts-space-cab-e6.jpg","w":900,"h":900},{"id":"tractocamion-daf-xf-480-6x2-fts-space-cab-e5","nombre":"TRACTOCAMION DAF XF 480 6x2 FTS SPACE CAB E5","tipo":"Tractocamión","modelo":"XF 480 6X2 FTS SPACE CAB E5","marca":"DAF","ind":"tra","industria":"Transporte","url":"https://www.skc.cl/daf/detalle/tractocamion/13941","img":"img/prod/tractocamion-daf-xf-480-6x2-fts-space-cab-e5.jpg","w":900,"h":900},{"id":"grua-horquilla-toyota-8fg45n","nombre":"GRUA HORQUILLA TOYOTA 8FG45N","tipo":"Grúa horquilla","modelo":"8FG45N","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla/14088","img":"img/prod/grua-horquilla-toyota-8fg45n.jpg","w":550,"h":550},{"id":"apilador-electrico-toyota-spe-160","nombre":"APILADOR ELECTRICO TOYOTA SPE 160","tipo":"Apilador eléctrico","modelo":"SPE 160","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/apilador-electrico/14177","img":"img/prod/apilador-electrico-toyota-spe-160.jpg","w":600,"h":600},{"id":"grua-horquilla-toyota-8fg50n","nombre":"GRUA HORQUILLA TOYOTA 8FG50N","tipo":"Grúa horquilla","modelo":"8FG50N","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla/14099","img":"img/prod/grua-horquilla-toyota-8fg50n.jpg","w":550,"h":550},{"id":"grua-horquilla-electrica-toyota-8fbn20","nombre":"GRUA HORQUILLA ELECTRICA TOYOTA 8FBN20","tipo":"Grúa horquilla eléctrica","modelo":"8FBN20","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla-electrica/14104","img":"img/prod/grua-horquilla-electrica-toyota-8fbn20.jpg","w":900,"h":900},{"id":"grua-horquilla-electrica-toyota-8fbn25","nombre":"GRUA HORQUILLA ELECTRICA TOYOTA 8FBN25","tipo":"Grúa horquilla eléctrica","modelo":"8FBN25","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla-electrica/14109","img":"img/prod/grua-horquilla-electrica-toyota-8fbn25.jpg","w":900,"h":900},{"id":"transpaleta-electrica-toyota-lpe200","nombre":"TRANSPALETA ELECTRICA TOYOTA LPE200","tipo":"Transpaleta eléctrica","modelo":"LPE200","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/transpaleta-electrica/14181","img":"img/prod/transpaleta-electrica-toyota-lpe200.jpg","w":600,"h":600},{"id":"grua-horquilla-electrica-toyota-8fbe20","nombre":"GRUA HORQUILLA ELECTRICA TOYOTA 8FBE20","tipo":"Grúa horquilla eléctrica","modelo":"8FBE20","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla-electrica/14108","img":"img/prod/grua-horquilla-electrica-toyota-8fbe20.jpg","w":550,"h":550},{"id":"grua-horquilla-toyota-8fg40n","nombre":"GRUA HORQUILLA TOYOTA 8FG40N","tipo":"Grúa horquilla","modelo":"8FG40N","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla/14098","img":"img/prod/grua-horquilla-toyota-8fg40n.jpg","w":600,"h":600},{"id":"grua-reach-toyota-8fbre16s","nombre":"GRUA REACH TOYOTA 8FBRE16S","tipo":"Grúa reach","modelo":"8FBRE16S","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-reach/14112","img":"img/prod/grua-reach-toyota-8fbre16s.jpg","w":900,"h":900},{"id":"grua-horquilla-toyota-32-8fg25","nombre":"GRUA HORQUILLA TOYOTA 32-8FG25","tipo":"Grúa horquilla","modelo":"32-8FG25","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla/14093","img":"img/prod/grua-horquilla-toyota-32-8fg25.jpg","w":900,"h":900},{"id":"grua-horquilla-toyota-32-8fg18","nombre":"GRUA HORQUILLA TOYOTA 32-8FG18","tipo":"Grúa horquilla","modelo":"32-8FG18","marca":"Toyota","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/toyota/detalle/grua-horquilla/14091","img":"img/prod/grua-horquilla-toyota-32-8fg18.jpg","w":900,"h":900},{"id":"camion-jmc-all-new-carrying-plus-sc-3t-euro-6-carroceria-pla","nombre":"CAMION JMC ALL NEW CARRYING PLUS SC 3T. EURO 6. CARROCERIA PLANA","tipo":"Camión","modelo":"ALL NEW CARRYING PLUS SC 3T. EURO 6. CARROCERIA PLANA","marca":"JMC","ind":"tra","industria":"Transporte","url":"https://www.skc.cl/jmc/detalle/camion/14183","img":"img/prod/camion-jmc-all-new-carrying-plus-sc-3t-euro-6-carroceria-pla.jpg","w":900,"h":900},{"id":"cargador-frontal-volvo-l350h","nombre":"CARGADOR FRONTAL VOLVO L350H","tipo":"Cargador frontal","modelo":"L350H","marca":"Volvo CE","ind":"con","industria":"Construcción","url":"https://www.skc.cl/volvo/detalle/cargador-frontal/13968","img":"img/prod/cargador-frontal-volvo-l350h.jpg","w":900,"h":900},{"id":"camion-rigido-volvo-r100e","nombre":"CAMION RIGIDO VOLVO R100E","tipo":"Camión rigido","modelo":"R100E","marca":"Volvo CE","ind":"con","industria":"Construcción","url":"https://www.skc.cl/volvo/detalle/camion-rigido/13964","img":"img/prod/camion-rigido-volvo-r100e.jpg","w":900,"h":900},{"id":"camion-articulado-volvo-a60h","nombre":"CAMION ARTICULADO VOLVO A60H","tipo":"Camión articulado","modelo":"A60H","marca":"Volvo CE","ind":"con","industria":"Construcción","url":"https://www.skc.cl/volvo/detalle/camion-articulado/13963","img":"img/prod/camion-articulado-volvo-a60h.jpg","w":900,"h":900},{"id":"cargador-frontal-volvo-l150h","nombre":"CARGADOR FRONTAL VOLVO L150H","tipo":"Cargador frontal","modelo":"L150H","marca":"Volvo CE","ind":"con","industria":"Construcción","url":"https://www.skc.cl/volvo/detalle/cargador-frontal/13974","img":"img/prod/cargador-frontal-volvo-l150h.jpg","w":900,"h":900},{"id":"tractor-tradicional-new-holland-agriculture-tl5-100","nombre":"TRACTOR TRADICIONAL NEW HOLLAND AGRICULTURE TL5.100","tipo":"Tractor tradicional","modelo":"TL5.100","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/tractor-tradicional/14042","img":"img/prod/tractor-tradicional-new-holland-agriculture-tl5-100.jpg","w":900,"h":900},{"id":"tractor-tradicional-new-holland-agriculture-t7-260-lwb","nombre":"TRACTOR TRADICIONAL NEW HOLLAND AGRICULTURE T7.260 LWB","tipo":"Tractor tradicional","modelo":"T7.260 LWB","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/pulverizador/14167","img":"img/prod/tractor-tradicional-new-holland-agriculture-t7-260-lwb.jpg","w":809,"h":809},{"id":"tractor-frutero-new-holland-agriculture-td75f","nombre":"TRACTOR FRUTERO NEW HOLLAND AGRICULTURE TD75F","tipo":"Tractor frutero","modelo":"TD75F","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/tractor-frutero/14037","img":"img/prod/tractor-frutero-new-holland-agriculture-td75f.jpg","w":900,"h":900},{"id":"enfardadora-new-holland-agriculture-hayliner-265w","nombre":"ENFARDADORA NEW HOLLAND AGRICULTURE HAYLINER® 265W","tipo":"Enfardadora","modelo":"HAYLINER® 265W","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/enfardadora/14034","img":"img/prod/enfardadora-new-holland-agriculture-hayliner-265w.jpg","w":900,"h":900},{"id":"cosechadora-polivalente-new-holland-agriculture-braud-9090x-","nombre":"COSECHADORA POLIVALENTE NEW HOLLAND AGRICULTURE BRAUD 9090X DUAL","tipo":"Cosechadora polivalente","modelo":"BRAUD 9090X DUAL","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/cosechadora-de-olivo/14053","img":"img/prod/cosechadora-polivalente-new-holland-agriculture-braud-9090x-.jpg","w":900,"h":900},{"id":"tractor-frutero-new-holland-agriculture-t4-85f","nombre":"TRACTOR FRUTERO NEW HOLLAND AGRICULTURE T4.85F","tipo":"Tractor frutero","modelo":"T4.85F","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/tractor-frutero/14039","img":"img/prod/tractor-frutero-new-holland-agriculture-t4-85f.jpg","w":900,"h":900},{"id":"enfardadora-de-bolos-new-holland-agriculture-roll-baler-125-","nombre":"ENFARDADORA DE BOLOS NEW HOLLAND AGRICULTURE ROLL BALER 125 COMBI","tipo":"Enfardadora de bolos","modelo":"ROLL BALER 125 COMBI","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/enfardadora/14168","img":"img/prod/enfardadora-de-bolos-new-holland-agriculture-roll-baler-125-.jpg","w":900,"h":900},{"id":"cosechadora-de-uva-new-holland-agriculture-braud-9090l","nombre":"COSECHADORA DE UVA NEW HOLLAND AGRICULTURE BRAUD 9090L","tipo":"Cosechadora de uva","modelo":"BRAUD 9090L","marca":"New Holland Agriculture","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/newhollandagriculture/detalle/cosechadora-de-uva/14170","img":"img/prod/cosechadora-de-uva-new-holland-agriculture-braud-9090l.jpg","w":900,"h":900},{"id":"manipulador-telescopico-manitou-mt-1440","nombre":"MANIPULADOR TELESCOPICO MANITOU MT 1440","tipo":"Manipulador telescópico","modelo":"MT 1440","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/manipulador-telescopico/14144","img":"img/prod/manipulador-telescopico-manitou-mt-1440.jpg","w":900,"h":900},{"id":"grua-horquilla-ausa-c251h","nombre":"GRUA HORQUILLA AUSA C251H","tipo":"Grúa horquilla","modelo":"C251H","marca":"AUSA","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/grua-horquilla/14203","img":"img/prod/grua-horquilla-ausa-c251h.jpg","w":900,"h":900},{"id":"grua-horquilla-manitou-mi-70d","nombre":"GRUA HORQUILLA MANITOU MI 70D","tipo":"Grúa horquilla","modelo":"MI 70D","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/grua-horquilla/14115","img":"img/prod/grua-horquilla-manitou-mi-70d.jpg","w":900,"h":900},{"id":"bulldozer-new-holland-construction-d180c","nombre":"BULLDOZER NEW HOLLAND CONSTRUCTION D180C","tipo":"Bulldozer","modelo":"D180C","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/bulldozer/14007","img":"img/prod/bulldozer-new-holland-construction-d180c.jpg","w":900,"h":900},{"id":"minicargador-manitou-1900r","nombre":"MINICARGADOR MANITOU 1900R","tipo":"Minicargador","modelo":"1900R","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/minicargador/14227","img":"img/prod/minicargador-manitou-1900r.jpg","w":900,"h":900},{"id":"motoniveladora-new-holland-construction-rg200-b-evo","nombre":"MOTONIVELADORA NEW HOLLAND CONSTRUCTION RG200.B EVO","tipo":"Motoniveladora","modelo":"RG200.B EVO","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/motoniveladora/14019","img":"img/prod/motoniveladora-new-holland-construction-rg200-b-evo.jpg","w":900,"h":885},{"id":"dumper-ausa-d201rhs","nombre":"DUMPER AUSA D201RHS","tipo":"Dumper","modelo":"D201RHS","marca":"AUSA","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/dumper/14201","img":"img/prod/dumper-ausa-d201rhs.jpg","w":900,"h":900},{"id":"torre-de-iluminacion-himoinsa-as4005-eco-ms","nombre":"TORRE DE ILUMINACION HIMOINSA AS4005 ECO MS","tipo":"Torre de iluminación","modelo":"AS4005 ECO MS","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/ausa/detalle/torre-de-iluminacion/14087","img":"img/prod/torre-de-iluminacion-himoinsa-as4005-eco-ms.jpg","w":429,"h":900},{"id":"subsolador-de-arrastre-jan-jumbo-matic-hidraulico-special-5","nombre":"SUBSOLADOR DE ARRASTRE JAN JUMBO MATIC HIDRAULICO SPECIAL 5","tipo":"Subsolador de arrastre","modelo":"JUMBO MATIC HIDRAULICO SPECIAL 5","marca":"Jan","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/ausa/detalle/arado-subsolador/14205","img":"img/prod/subsolador-de-arrastre-jan-jumbo-matic-hidraulico-special-5.jpg","w":900,"h":900},{"id":"cargador-frontal-new-holland-construction-w190d-stage-v-ital","nombre":"CARGADOR FRONTAL NEW HOLLAND CONSTRUCTION W190D Stage V - Italia","tipo":"Cargador frontal","modelo":"W190D STAGE V - ITALIA","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/ausa/detalle/cargador-frontal/14008","img":"img/prod/cargador-frontal-new-holland-construction-w190d-stage-v-ital.jpg","w":900,"h":900},{"id":"cabezal-procesador-waratah-h623c","nombre":"CABEZAL PROCESADOR WARATAH H623C","tipo":"Cabezal procesador","modelo":"H623C","marca":"Waratah","ind":"for","industria":"Forestal","url":"https://www.skc.cl/waratah/detalle/cabezal-procesador/14027","img":"img/prod/cabezal-procesador-waratah-h623c.jpg","w":900,"h":900},{"id":"cabezal-procesador-waratah-hth622b","nombre":"CABEZAL PROCESADOR WARATAH HTH622B","tipo":"Cabezal procesador","modelo":"HTH622B","marca":"Waratah","ind":"for","industria":"Forestal","url":"https://www.skc.cl/waratah/detalle/cabezal-procesador/14025","img":"img/prod/cabezal-procesador-waratah-hth622b.jpg","w":900,"h":900},{"id":"cabezal-procesador-waratah-hth616c","nombre":"CABEZAL PROCESADOR WARATAH HTH616C","tipo":"Cabezal procesador","modelo":"HTH616C","marca":"Waratah","ind":"for","industria":"Forestal","url":"https://www.skc.cl/waratah/detalle/cabezal-procesador/14026","img":"img/prod/cabezal-procesador-waratah-hth616c.jpg","w":900,"h":900},{"id":"retroexcavadora-new-holland-construction-b95d-tier-4b-final-","nombre":"RETROEXCAVADORA NEW HOLLAND CONSTRUCTION B95D Tier 4B Final - Italia","tipo":"Retroexcavadora","modelo":"B95D TIER 4B FINAL - ITALIA","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/newhollandconstruction/detalle/retroexcavadora/14022","img":"img/prod/retroexcavadora-new-holland-construction-b95d-tier-4b-final-.jpg","w":900,"h":900},{"id":"minicargador-new-holland-construction-l318-tier-4b-final-cab","nombre":"MINICARGADOR NEW HOLLAND CONSTRUCTION L318 Tier 4B Final Cabinado. USA","tipo":"Minicargador","modelo":"L318 TIER 4B FINAL CABINADO. USA","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/newhollandconstruction/detalle/minicargador/14015","img":"img/prod/minicargador-new-holland-construction-l318-tier-4b-final-cab.jpg","w":900,"h":900},{"id":"retroexcavadora-new-holland-construction-b85d-tier-4b-final-","nombre":"RETROEXCAVADORA NEW HOLLAND CONSTRUCTION B85D Tier 4B Final - India","tipo":"Retroexcavadora","modelo":"B85D TIER 4B FINAL - INDIA","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/newhollandconstruction/detalle/minicargador/14018","img":"img/prod/retroexcavadora-new-holland-construction-b85d-tier-4b-final-.jpg","w":900,"h":900},{"id":"retroexcavadora-new-holland-construction-b110d-tier-4b-final","nombre":"RETROEXCAVADORA NEW HOLLAND CONSTRUCTION B110D Tier 4B Final - Italia","tipo":"Retroexcavadora","modelo":"B110D TIER 4B FINAL - ITALIA","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/newhollandconstruction/detalle/retroexcavadora/14020","img":"img/prod/retroexcavadora-new-holland-construction-b110d-tier-4b-final.jpg","w":900,"h":900},{"id":"excavadora-new-holland-construction-e215d-tier-4-japon","nombre":"EXCAVADORA NEW HOLLAND CONSTRUCTION E215D Tier 4. Japón","tipo":"Excavadora","modelo":"E215D TIER 4. JAPÓN","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/newhollandconstruction/detalle/excavadora/14011","img":"img/prod/excavadora-new-holland-construction-e215d-tier-4-japon.jpg","w":900,"h":900},{"id":"minicargador-new-holland-construction-l328-tier-4b-final-cab","nombre":"MINICARGADOR NEW HOLLAND CONSTRUCTION L328 Tier 4B Final Cabinado. USA","tipo":"Minicargador","modelo":"L328 TIER 4B FINAL CABINADO. USA","marca":"New Holland Construction","ind":"con","industria":"Construcción","url":"https://www.skc.cl/newhollandconstruction/detalle/minicargador/14017","img":"img/prod/minicargador-new-holland-construction-l328-tier-4b-final-cab.jpg","w":900,"h":900},{"id":"manipulador-telescopico-manitou-mt-625-h","nombre":"MANIPULADOR TELESCOPICO MANITOU MT 625 H","tipo":"Manipulador telescópico","modelo":"MT 625 H","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/manitou/detalle/manipulador-telescopico/14145","img":"img/prod/manipulador-telescopico-manitou-mt-625-h.jpg","w":900,"h":900},{"id":"manipulador-telescopico-manitou-mt-x-733-mining","nombre":"MANIPULADOR TELESCOPICO MANITOU MT-X 733 MINING","tipo":"Manipulador telescópico","modelo":"MT-X 733 MINING","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/manitou/detalle/manipulador-telescopico/14130","img":"img/prod/manipulador-telescopico-manitou-mt-x-733-mining.jpg","w":900,"h":900},{"id":"plataforma-articulada-manitou-160-atj","nombre":"PLATAFORMA ARTICULADA MANITOU 160 ATJ","tipo":"Plataforma articulada","modelo":"160 ATJ","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/manitou/detalle/plataforma-articulada/14155","img":"img/prod/plataforma-articulada-manitou-160-atj.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hyw-20-t5","nombre":"GENERADOR DIESEL HIMOINSA HYW 20 T5","tipo":"Generador diesel","modelo":"HYW 20 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14080","img":"img/prod/generador-diesel-himoinsa-hyw-20-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-100-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 100 T5","tipo":"Generador diesel","modelo":"HFW 100 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14079","img":"img/prod/generador-diesel-himoinsa-hfw-100-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-400-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 400 T5","tipo":"Generador diesel","modelo":"HFW 400 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14073","img":"img/prod/generador-diesel-himoinsa-hfw-400-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-60-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 60 T5","tipo":"Generador diesel","modelo":"HFW 60 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14085","img":"img/prod/generador-diesel-himoinsa-hfw-60-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-305-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 305 T5","tipo":"Generador diesel","modelo":"HFW 305 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14082","img":"img/prod/generador-diesel-himoinsa-hfw-305-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-160-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 160 T5","tipo":"Generador diesel","modelo":"HFW 160 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14076","img":"img/prod/generador-diesel-himoinsa-hfw-160-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hyw-45-t5","nombre":"GENERADOR DIESEL HIMOINSA HYW 45 T5","tipo":"Generador diesel","modelo":"HYW 45 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14083","img":"img/prod/generador-diesel-himoinsa-hyw-45-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-85-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 85 T5","tipo":"Generador diesel","modelo":"HFW 85 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14086","img":"img/prod/generador-diesel-himoinsa-hfw-85-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-200-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 200 T5","tipo":"Generador diesel","modelo":"HFW 200 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14081","img":"img/prod/generador-diesel-himoinsa-hfw-200-t5.jpg","w":900,"h":900},{"id":"generador-diesel-himoinsa-hfw-500-t5","nombre":"GENERADOR DIESEL HIMOINSA HFW 500 T5","tipo":"Generador diesel","modelo":"HFW 500 T5","marca":"Himoinsa","ind":"ind","industria":"Industrial","url":"https://www.skc.cl/himoinsa/detalle/generador-diesel/14074","img":"img/prod/generador-diesel-himoinsa-hfw-500-t5.jpg","w":900,"h":900},{"id":"seleccionadora-materiales-tres-pisos-mov-sandvik-qa451","nombre":"SELECCIONADORA MATERIALES TRES PISOS MOV SANDVIK QA451","tipo":"Seleccionadora materiales tres pisos mov","modelo":"QA451","marca":"Sandvik","ind":"min","industria":"Minería","url":"https://www.skc.cl/sandvik/detalle/seleccionadora-materiales-tres-pisos-mov/14031","img":"img/prod/seleccionadora-materiales-tres-pisos-mov-sandvik-qa451.jpg","w":900,"h":900},{"id":"chancador-de-cono-movil-sobre-orugas-con-harnero-sandvik-qh3","nombre":"CHANCADOR DE CONO MÓVIL SOBRE ORUGAS CON HARNERO SANDVIK QH332DDHS","tipo":"Chancador de cono móvil sobre orugas con harnero","modelo":"QH332DDHS","marca":"Sandvik","ind":"min","industria":"Minería","url":"https://www.skc.cl/sandvik/detalle/chancador-de-cono-movil-sobre-orugas-con-harnero/14028","img":"img/prod/chancador-de-cono-movil-sobre-orugas-con-harnero-sandvik-qh3.jpg","w":900,"h":900},{"id":"chancador-mandibulas-movil-sobre-orugas-sandvik-qj241","nombre":"CHANCADOR MANDIBULAS MOVIL SOBRE ORUGAS SANDVIK QJ241","tipo":"Chancador mandíbulas móvil sobre orugas","modelo":"QJ241","marca":"Sandvik","ind":"min","industria":"Minería","url":"https://www.skc.cl/sandvik/detalle/chancador-mandibulas-movil-sobre-orugas/14029","img":"img/prod/chancador-mandibulas-movil-sobre-orugas-sandvik-qj241.jpg","w":900,"h":900},{"id":"seleccionadora-de-materiales-escalper-sandvik-qe141","nombre":"SELECCIONADORA DE MATERIALES ESCALPER SANDVIK QE141","tipo":"Seleccionadora de materiales escalper","modelo":"QE141","marca":"Sandvik","ind":"min","industria":"Minería","url":"https://www.skc.cl/sandvik/detalle/seleccionadora-de-materiales-escalper/14030","img":"img/prod/seleccionadora-de-materiales-escalper-sandvik-qe141.jpg","w":900,"h":900},{"id":"cargador-frontal-quicke-x3s","nombre":"CARGADOR FRONTAL QUICKE X3S","tipo":"Cargador frontal","modelo":"X3S","marca":"Quicke","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/quicke/detalle/cargador-frontal/14193","img":"img/prod/cargador-frontal-quicke-x3s.jpg","w":900,"h":900},{"id":"cargador-frontal-quicke-q5m","nombre":"CARGADOR FRONTAL QUICKE Q5M","tipo":"Cargador frontal","modelo":"Q5M","marca":"Quicke","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/quicke/detalle/cargador-frontal/14195","img":"img/prod/cargador-frontal-quicke-q5m.jpg","w":900,"h":900},{"id":"manipulador-telescopico-manitou-mrt-x-1840","nombre":"MANIPULADOR TELESCOPICO MANITOU MRT-X 1840","tipo":"Manipulador telescópico","modelo":"MRT-X 1840","marca":"Manitou","ind":"con","industria":"Construcción","url":"https://www.skc.cl/mantsinen/detalle/manipulador-telescopico/14149","img":"img/prod/manipulador-telescopico-manitou-mrt-x-1840.jpg","w":900,"h":900},{"id":"remolque-agricola-granelero-jan-tanker-15-000","nombre":"REMOLQUE AGRICOLA GRANELERO JAN TANKER 15.000","tipo":"Remolque agrícola granelero","modelo":"TANKER 15.000","marca":"Jan","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/jan/detalle/tolva-granelera/14214","img":"img/prod/remolque-agricola-granelero-jan-tanker-15-000.jpg","w":900,"h":900},{"id":"acoplado-por-la-barra-de-traccion-jan-lancer-6000-organico","nombre":"ACOPLADO POR LA BARRA DE TRACCION JAN LANCER 6000 ORGANICO","tipo":"Acoplado por la barra de traccion","modelo":"LANCER 6000 ORGANICO","marca":"Jan","ind":"agr","industria":"Agrícola","url":"https://www.skc.cl/jan/detalle/dist-de-fertilizante-y-cal/14208","img":"img/prod/acoplado-por-la-barra-de-traccion-jan-lancer-6000-organico.jpg","w":900,"h":900}];
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var IND=['Minería','Construcción','Agrícola','Forestal','Transporte','Industrial','Portuario'];
+  var $=function(s){return document.querySelector(s);};
+  var f={ind:'todo',marca:'',tipo:'',q:'',orden:'ind'};
+  // datos vivos del hero
+  var marcas=[],tipos=[],inds=[];
+  CATALOGO.forEach(function(p){if(marcas.indexOf(p.marca)<0)marcas.push(p.marca);if(tipos.indexOf(p.tipo)<0)tipos.push(p.tipo);if(inds.indexOf(p.industria)<0)inds.push(p.industria);});
+  marcas.sort();tipos.sort();
+  function cuenta(el,to){if(rm){el.textContent=to;return;}var s=performance.now(),d=1100;(function st(t){var k=Math.min(1,(t-s)/d);k=1-Math.pow(1-k,3);el.textContent=Math.round(to*k);if(k<1)requestAnimationFrame(st);})(s);}
+  cuenta($('#v-eq'),CATALOGO.length);cuenta($('#v-ma'),marcas.length);cuenta($('#v-in'),inds.length);
+  // filtros
+  var chips=$('#chips');IND.forEach(function(i){if(inds.indexOf(i)<0)return;var b=document.createElement('button');b.type='button';b.dataset.f=i;b.setAttribute('aria-pressed','false');b.textContent=i;chips.appendChild(b);});
+  chips.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(chips.children,function(x){x.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');f.ind=b.dataset.f;render();});
+  var fm=$('#fmarca'),ft=$('#ftipo');marcas.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;fm.appendChild(o);});tipos.forEach(function(t){var o=document.createElement('option');o.value=t;o.textContent=t;ft.appendChild(o);});
+  fm.addEventListener('change',function(){f.marca=fm.value;render();});ft.addEventListener('change',function(){f.tipo=ft.value;render();});$('#orden').addEventListener('change',function(e){f.orden=e.target.value;render();});
+  var sug=$('#sug');CATALOGO.forEach(function(p){var o=document.createElement('option');o.value=p.marca+' '+p.modelo;sug.appendChild(o);});
+  var q=$('#q');q.addEventListener('input',function(){f.q=q.value.trim().toLowerCase();render();});$('#fbuscar').addEventListener('submit',function(e){e.preventDefault();f.q=q.value.trim().toLowerCase();render();$('#catalogo').scrollIntoView({behavior:rm?'auto':'smooth'});});
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+  function pasa(p){if(f.ind!=='todo'&&p.industria!==f.ind)return false;if(f.marca&&p.marca!==f.marca)return false;if(f.tipo&&p.tipo!==f.tipo)return false;if(f.q){var h=norm(p.marca+' '+p.modelo+' '+p.tipo+' '+p.industria);return norm(f.q).split(/\s+/).every(function(w){return h.indexOf(w)>-1;});}return true;}
+  // bolsa
+  var bolsa={};try{bolsa=JSON.parse(localStorage.getItem('skc-bolsa')||'{}')||{};}catch(e){bolsa={};}
+  var segs={};try{segs=JSON.parse(localStorage.getItem('skc-seg')||'{}')||{};}catch(e){segs={};}
+  function guarda(){try{localStorage.setItem('skc-bolsa',JSON.stringify(bolsa));localStorage.setItem('skc-seg',JSON.stringify(segs));}catch(e){}}
+  function byId(id){for(var i=0;i<CATALOGO.length;i++)if(CATALOGO[i].id===id)return CATALOGO[i];}
+  function total(){var n=0;for(var k in bolsa)n+=bolsa[k];return n;}
+  function card(p){var en=!!bolsa[p.id];return '<article class="p" data-id="'+p.id+'"><button class="seg'+(segs[p.id]?' on':'')+'" type="button" data-seg="'+p.id+'" aria-label="Seguir este equipo" title="Seguir">'+(segs[p.id]?'♥':'♡')+'</button><div class="img"><img src="'+p.img+'" alt="'+p.tipo+' '+p.marca+' '+p.modelo+'" width="'+p.w+'" height="'+p.h+'" loading="lazy"></div><div class="body"><span class="tipo">'+p.industria+' · '+p.tipo+'</span><span class="nom">'+p.marca+'</span><span class="mod">'+p.modelo+'</span><div class="acc2"><button type="button" data-add="'+p.id+'" class="'+(en?'en':'')+'">'+(en?'En la bolsa ✓':'Agregar a la bolsa')+'</button><a href="'+p.url+'" target="_blank" rel="noopener">skc.cl →</a></div></div></article>';}
+  function render(){
+    var lista=CATALOGO.filter(pasa);
+    var key=f.orden==='az'?function(p){return p.marca+' '+p.modelo;}:f.orden==='marca'?function(p){return p.marca;}:f.orden==='tipo'?function(p){return p.tipo;}:function(p){return String(IND.indexOf(p.industria)).padStart(2,'0')+' '+p.industria;};
+    lista.sort(function(a,b){var ka=key(a),kb=key(b);return ka<kb?-1:ka>kb?1:(a.modelo<b.modelo?-1:1);});
+    var grupos={},orden=[];lista.forEach(function(p){var g=f.orden==='az'?'Catálogo':f.orden==='marca'?p.marca:f.orden==='tipo'?p.tipo:p.industria;if(!grupos[g]){grupos[g]=[];orden.push(g);}grupos[g].push(p);});
+    $('#grupos').innerHTML=orden.map(function(g){return '<section class="grupo"><h2>'+g+'<small>'+grupos[g].length+(grupos[g].length===1?' equipo':' equipos')+'</small></h2><div class="prods">'+grupos[g].map(card).join('')+'</div></section>';}).join('');
+    $('#vacio').hidden=lista.length>0;$('#cnt').textContent=lista.length+' de '+CATALOGO.length+' equipos';
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-add]');if(a){var id=a.dataset.add;if(bolsa[id]){delete bolsa[id];}else{bolsa[id]=1;}guarda();pinta();render();return;}
+    var s=e.target.closest('[data-seg]');if(s){var sid=s.dataset.seg;if(segs[sid])delete segs[sid];else segs[sid]=1;guarda();render();}
+  });
+  // cajón
+  var cajon=$('#cajon'),velo=$('#velo'),abrir=$('#abrir');
+  function abre(on){cajon.classList.toggle('on',on);velo.classList.toggle('on',on);cajon.setAttribute('aria-hidden',String(!on));abrir.setAttribute('aria-expanded',String(on));if(on)pinta();}
+  abrir.addEventListener('click',function(){abre(true);});$('#cerrar').addEventListener('click',function(){abre(false);});velo.addEventListener('click',function(){abre(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')abre(false);});
+  var emp=$('#emp');try{emp.value=localStorage.getItem('skc-emp')||'';}catch(e){}
+  emp.addEventListener('input',function(){try{localStorage.setItem('skc-emp',emp.value);}catch(e){}pinta();});
+  function texto(){var ls=[];for(var k in bolsa){var p=byId(k);if(p)ls.push('- '+bolsa[k]+' × '+p.tipo+' '+p.marca+' '+p.modelo+' ('+p.url+')');}
+    return 'Hola SKC, solicito cotización de los siguientes equipos:\n'+ls.join('\n')+(emp.value.trim()?'\nEmpresa/faena: '+emp.value.trim():'')+'\nGracias.';}
+  function pinta(){var n=total();$('#n').textContent=n;$('#r-n').textContent=n;var ids=Object.keys(bolsa);
+    $('#lista').innerHTML=ids.length?ids.map(function(k){var p=byId(k);if(!p)return '';return '<div class="item"><img src="'+p.img+'" alt=""><div><b>'+p.marca+' '+p.modelo+'</b><span>'+p.tipo+' · '+p.industria+'</span></div><div class="qty"><button type="button" data-q="-1" data-id="'+k+'" aria-label="Quitar uno">−</button><output>'+bolsa[k]+'</output><button type="button" data-q="1" data-id="'+k+'" aria-label="Agregar uno">+</button></div></div>';}).join(''):'<p class="vac">La bolsa está vacía. Agregue equipos desde el catálogo.</p>';
+    var t=texto();$('#enviar').href='mailto:servicioalcliente@skc.cl?subject='+encodeURIComponent('Solicitud de cotización · '+n+' equipo'+(n===1?'':'s'))+'&body='+encodeURIComponent(t);$('#ok').textContent='';}
+  $('#lista').addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(!b)return;var id=b.dataset.id;bolsa[id]=(bolsa[id]||0)+(+b.dataset.q);if(bolsa[id]<=0)delete bolsa[id];guarda();pinta();render();});
+  $('#copiar').addEventListener('click',function(){var t=texto(),ok=$('#ok');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){ok.textContent='Solicitud copiada';},function(){ok.textContent='No se pudo copiar';});}else ok.textContent='No se pudo copiar';});
+  render();pinta();
+  // reveal
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.05});els.forEach(function(el){io.observe(el);});requestAnimationFrame(function(){els.forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});});setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},2500);}else els.forEach(function(el){el.classList.add('in');});
+})();
+</script>
+</body>
+</html>

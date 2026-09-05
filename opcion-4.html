@@ -164,7 +164,7 @@ h2.t{font-family:var(--fd);text-transform:uppercase;letter-spacing:.005em;line-h
       <button class="btn btn-o" type="button" id="copiar">Copiar el mensaje</button>
       <p class="copiado" id="copiado" aria-live="polite"></p>
       <a class="btn btn-w" id="form" href="https://www.skc.cl/contactos" target="_blank" rel="noopener">Pegarlo en el formulario de SKC</a>
-      <p class="alt">Mesa central <a href="tel:56228373000">+56 228 373 000</a> · <a href="mailto:servicioalcliente@skc.cl">servicioalcliente@skc.cl</a></p>
+      <p class="alt">Mesa central <a href="tel:+56228373000">+56 228 373 000</a> · <a href="mailto:servicioalcliente@skc.cl">servicioalcliente@skc.cl</a></p>
     </form>
   </section>
 </div>
@@ -217,7 +217,7 @@ document.documentElement.classList.replace('nojs','js');
     nuevo:{v:'quiero cotizar un equipo nuevo',dest:'Venta de unidades · 600 410 5000',href:'tel:6004105000',btn:'Llamar a venta de unidades · 600 410 5000',form:'https://www.skc.cl/contactos'},
     arriendo:{v:'quiero arrendar',dest:'SK Rental · skrental.com',href:'https://www.skrental.com/',btn:'Ir a SK Rental →',form:'https://www.skrental.com/'},
     usado:{v:'busco un equipo usado',dest:'BeMarket · be-market.com',href:'https://www.be-market.com/',btn:'Ir a BeMarket →',form:'https://www.be-market.com/'},
-    repuestos:{v:'necesito repuestos o insumos para',dest:'BeParts · beparts.cl · lubricantes y neumáticos +56 228 373 321',href:'https://www.beparts.cl',btn:'Ir a BeParts →',form:'tel:56228373321'},
+    repuestos:{v:'necesito repuestos o insumos para',dest:'BeParts · beparts.cl · lubricantes y neumáticos +56 228 373 321',href:'https://www.beparts.cl',btn:'Ir a BeParts →',form:'tel:+56228373321'},
     servicio:{v:'necesito servicio técnico para',dest:'SKC Servicio Técnico · servicioalcliente@skc.cl',href:'mailto:servicioalcliente@skc.cl',btn:'Escribir a servicio técnico',form:'https://www.skc.cl/servicio-tecnico'},
     capacitacion:{v:'quiero una capacitación sobre',dest:'SKC Capacitación',href:'https://www.skc.cl/capacitaciones',btn:'Ir a Capacitaciones →',form:'https://www.skc.cl/contactos'}
   };
@@ -229,7 +229,7 @@ document.documentElement.classList.replace('nojs','js');
   [ind,marca,ofi,nom,emp].forEach(function(i){i.addEventListener('input',upd);i.addEventListener('change',upd);});
   [].forEach.call(document.querySelectorAll('.nec button'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.nec button'),function(x){x.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');nec=b.dataset.n;upd();});});
   [].forEach.call(document.querySelectorAll('#canales li'),function(li){li.addEventListener('click',function(){nec=li.dataset.n;[].forEach.call(document.querySelectorAll('.nec button'),function(x){x.setAttribute('aria-pressed',String(x.dataset.n===nec));});upd();document.getElementById('q').scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});});});
-  document.getElementById('copiar').addEventListener('click',function(){var done=function(){cop.textContent='Mensaje copiado';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){cop.textContent='Selecciónelo arriba y cópielo';});}else{cop.textContent='Selecciónelo arriba y cópielo';}});
+  document.getElementById('copiar').addEventListener('click',function(){var done=function(){cop.textContent='Mensaje copiado';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){cop.textContent='Selecciónalo arriba y cópialo';});}else{cop.textContent='Selecciónalo arriba y cópialo';}});
   document.getElementById('q').addEventListener('submit',function(ev){ev.preventDefault();ir.click();});
   upd();
 })();
