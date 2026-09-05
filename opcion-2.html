@@ -114,6 +114,7 @@ h1 em{font-style:normal;color:var(--az)}
 .bar a{display:flex;align-items:center;justify-content:center;min-height:60px;font-weight:700}
 .bar .a{background:var(--az-2);color:#fff}.bar .w{background:var(--rj);color:#fff}
 @media (min-width:900px){.bar{display:none}body{padding-bottom:0}}
+.hero-foto{position:relative}.hero-foto video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px 14px 14px 220px}
 </style>
 </head>
 <body>
@@ -139,7 +140,7 @@ h1 em{font-style:normal;color:var(--az)}
         <div class="r"><span class="k">Oficinas regionales</span><b>12</b></div>
       </div>
     </div>
-    <figure class="hero-foto rv"><img src="img/eq/construccion.jpg" alt="Excavadora de ruedas en una obra urbana" width="1920" height="1097" fetchpriority="high"></figure>
+    <figure class="hero-foto rv"><img src="img/eq/construccion.jpg" alt="Excavadora de ruedas en una obra urbana" width="1920" height="1097" fetchpriority="high"><video data-amb autoplay muted loop playsinline preload="metadata" poster="img/eq/poster-muestra-1.jpg" aria-hidden="true" tabindex="-1"><source src="video/muestra-1.mp4" type="video/mp4"></video></figure>
   </div>
 </section>
 
@@ -223,6 +224,9 @@ document.documentElement.classList.replace('nojs','js');
   [].forEach.call(document.querySelectorAll('.filtros button'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.filtros button'),function(x){x.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');filtra(b.dataset.f);});});
   filtra('todo');
 })();
+</script>
+<script>
+(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,off=rm||(navigator.connection&&navigator.connection.saveData);[].forEach.call(document.querySelectorAll('video[data-amb]'),function(v){if(off){v.remove();return;}v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});})();
 </script>
 </body>
 </html>
